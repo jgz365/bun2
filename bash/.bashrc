@@ -26,3 +26,8 @@ _build_ps1() {
   PS1+=" ${dim_dots} ${smiley}"
   PS1+='\n\[\e[35m\]❯\[\e[0m\] '
 }
+
+# cd + ls combination
+cd () {
+    builtin cd "$@" && ls --color=auto -A
+}

@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Aesthetics
-Plug 'morhetz/gruvbox'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
@@ -66,12 +66,9 @@ set smartcase
 
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme catppuccin_mocha 
 
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_italic = 1
-
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'papercolor'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 
@@ -125,4 +122,3 @@ let g:ctrlp_working_path_mode = 'ra'
 " CLang
 nnoremap cc :!gcc % -o %:r && ./%:r
 " CLang
-nnoremap cd :!gcc -g % -o %:r

@@ -1,6 +1,5 @@
 # My personal bash aliases.
 # © jgz365
-# Ubuntu 24.04.4 LTS
 
 # VIM 
 alias @editor='vim'
@@ -20,7 +19,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Personal Files
-alias cdir='cd $HOME/Desktop/journey-to-the-Cnter/'
+#alias cdir='cd $HOME/Desktop/journey-to-the-Cnter/'
 
 # APT
 alias @sync='sudo apt update'
@@ -36,7 +35,7 @@ alias @info='apt show'
 alias @bworld='apt list --installed 2>/dev/null'
 
 # Snap 
-alias @sbox='snap'
+#alias @sbox='snap'
 
 # System
 alias cat='batcat'

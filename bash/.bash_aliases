@@ -24,7 +24,7 @@ alias cdir='cd $HOME/Desktop/journey-to-the-Cnter/'
 
 # APT
 alias @sync='sudo apt update'
-alias @world='sudo apt update && sudo apt upgrade -y'
+alias @world='sudo apt upgrade'
 alias @package='sudo apt install'
 alias @fullpkg='sudo apt install --install-recommends'
 alias @lesspkg='sudo apt install --no-install-recommends'

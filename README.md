@@ -1,1 +1,1 @@
-My (somewhat) configuration files that I use in my Ubuntu System.
+My (somewhat) configuration files that I use in CachyOS (An Arch-based Linux distribution.)

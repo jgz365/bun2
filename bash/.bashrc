@@ -1,19 +1,59 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Aliases
+
+# VIM 
+alias @ebash='@editor $HOME/.bashrc'
+alias @vocoder='@editor $HOME/.vimrc'
+
+# Bash Management
+alias @read='bat $HOME/.bashrc'
+alias @zrel='source $HOME/.bashrc'
+alias @load='history | less'
+alias @reset='history -c && history -w'
+
+# Directory Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Pacman
+alias @esync="sudo pacman -Syy"
+alias @world='sudo pacman -Syu'
+alias @package='sudo pacman -S'
+alias @remnant='sudo pacman -R'
+alias @eclean='sudo pacman -Rns $(pacman -Qtdq) 2>/dev/null && sudo pacman -Sc'
+alias @browse='pacman -Ss'
+alias @info='pacman -Si'
+
+# System
+alias @top='htop'
+alias @disk='df -h'
+alias @mem='free -h'
+alias @ports='ss -tulnp'
+
 PROMPT_COMMAND=_build_ps1
 
 _build_ps1() {
   local exit_code=$?
 
-  # ── System age (guarded against unsupported filesystems)
   local birth days_str
   birth=$(stat -c %W / 2>/dev/null)
   if [[ -n $birth && $birth -gt 0 ]]; then
     local days=$(( ($(date +%s) - birth) / 86400 ))
     days_str="[${days}d]"
   else
-    days_str="[?d]"              # fs doesn't support birth time
+    days_str="[?d]"
   fi
 
-  # ── Plain strings for accurate dot-fill math
   local plain_left="${USER}@${HOSTNAME%%.*} ╱ ${days_str} $(dirs +0)"
   local smiley_plain; [[ $exit_code -eq 0 ]] && smiley_plain=':)' || smiley_plain=':('
   local cols=${COLUMNS:-80}
@@ -23,7 +63,6 @@ _build_ps1() {
   local dots; printf -v dots "%${dot_len}s" ""
   dots="${dots// /·}"
 
-  # ── Color variables
   local c_user='\[\e[35m\]' c_host='\[\e[36m\]'
   local c_dim='\[\e[2;37m\]' c_dir='\[\e[37m\]'
   local c_rst='\[\e[0m\]' c_sym='\[\e[35m\]'
@@ -45,3 +84,9 @@ _build_ps1() {
 cd () {
     builtin cd "$@" && ls --color=auto -A
 }
+
+# Git status from https://github.com/magicmonty/bash-git-prompt
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source "$HOME/.bash-git-prompt/gitprompt.sh"
+fi

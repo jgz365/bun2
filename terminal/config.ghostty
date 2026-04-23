@@ -28,7 +28,9 @@ scrollbar = never
 
 # Miscellaneous
 gtk-single-instance = true
+window-width = 1920
+window-height = 1080
 
-# Padding (fits with Vim's Colorscheme, as it would look broken if the themes do not match each other)
+# Padding
 window-padding-x = 16
 window-padding-y = 12
